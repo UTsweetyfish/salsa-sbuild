@@ -263,7 +263,7 @@ sub setup {
 			$self->log_warning("$base_deb already exists in $extra_packages_archive_dir inside the chroot. Skipping...\n");
 			next;
 		    }
-		    $self->log("Copying $deb to $session->get('Location')...\n");
+		    $self->log("Copying $deb to " . $session->get('Location') . "...\n");
 		    $session->copy_to_chroot($deb, $extra_packages_archive_dir);
 		} elsif (-d $deb) {
 		    opendir(D, $deb);
@@ -274,7 +274,7 @@ sub setup {
 			    $self->log_warning("$f already exists in $extra_packages_archive_dir inside the chroot. Skipping...\n");
 			    next;
 			}
-			$self->log("Copying $deb/$f to $session->get('Location')...\n");
+			$self->log("Copying $deb/$f to " . $session->get('Location') . "...\n");
 			$session->copy_to_chroot("$deb/$f", $extra_packages_archive_dir);
 		    }
 		    closedir(D);
